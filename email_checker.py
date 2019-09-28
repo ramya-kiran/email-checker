@@ -4,8 +4,11 @@ from validity_check import *
 
 app = Flask(__name__)
 
+"""
+This file contains the web server side functions to process email list and output the number of unique emails in the list.
+"""
 
-# this function serves as
+# this function serves helpful to print the correct route path for unique_email function
 @app.route('/')
 def index():
     return "call ~/unique_email with a list of emails which are to be verified in JSON, FORM or ARGS request"
@@ -23,7 +26,7 @@ def unique_email():
     elif request.args and var_name in request.args:
         email_list = eval(request.args['email_list'])
     else:
-        abort(400)
+        abort(400) # abort if the request format is not the above mentioned formats
 
     unique_mails = {}
 
